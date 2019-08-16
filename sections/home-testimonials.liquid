@@ -1,0 +1,90 @@
+{%- assign count = 0 -%}
+<div class="wrapper">
+   <div class="grid-uniform testimonials-wrapper">
+      <!--<div class="slideshow-container">-->
+         {% for block in section.blocks %}
+         <div class="grid__item one-quarter medium-down--one-whole testimonial">
+            <p>{{ block.settings.testimonial }}</p>
+            {%comment%}<strong>{{ block.settings.customer }}</strong>{%endcomment%}
+            <div class="testimonial-logo">
+               <img src="{{ block.settings.image | img_url: '229x' }}" >
+            </div>
+         </div>
+         {% assign count = count  | plus: 1 %}        
+         {% endfor %}
+      <!--</div>-->
+      {%comment%}
+      <div class="dot-container">
+         {% for n in (1..count) %}
+         <span class="dot" data-index="{{ forloop.index }}"></span> 
+         {% endfor %}
+      </div>
+      {%endcomment%}
+   </div>
+</div> 
+{% schema %}
+{
+  "name": "Touchland Testimonials",
+  "blocks": [
+    {
+        "type": "text",
+        "name": "Testimonials",
+        "settings": [
+          {
+            "type": "text",
+            "id": "testimonial",
+            "label": "Testimonal",
+            "default": "<p>The Nespreso or Nest of hand sanitizers on-the-go and a t home or for commercial use</p>"
+          },
+          {
+            "type": "text",
+            "id": "customer",
+            "label": "Customer",
+            "default": "Customer"
+          },        
+          {
+          "id": "image",
+          "type": "image_picker",
+       	  "label": "Testimonial Logo"
+          }
+        ]
+      }
+  ],
+  "presets": [
+    {
+      "name": "Touchland Testimonials",
+      "category": "Touchland"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+$(document).ready(function(){
+    var slideIndex = 4;
+    showSlides(slideIndex);
+    $('.dot').on('click',function(){
+      var n = $(this).attr('data-index');  
+      showSlides(slideIndex = n);
+    })
+
+    function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("testimonial-wrapper");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"; 
+        }
+        for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+        }
+    slides[slideIndex-1].style.display = "block"; 
+    dots[slideIndex-1].className += " active";
+    }
+});
+{% endjavascript %}

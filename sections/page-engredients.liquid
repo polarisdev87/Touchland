@@ -1,0 +1,72 @@
+<div class="section-engredients">
+<div class="wrapper">
+<div class="grid-uniform page-engredients">
+  <div class="section-header text-center">
+    <h3> {{ section.settings.title }} </h3>
+    <div class="eight-twelfths medium-down--one-whole f-none"><p> {{ section.settings.description }} </p></div>
+  </div>
+  {% for block in section.blocks %}  
+            <div class="grid__item two-sixths medium-down--eight-tenths engredient-box{% if forloop.index <= 3 %} mb-70{% endif %}" {% if block.settings.image != blank %} style="background:url({{ block.settings.image  | img_url: '282x' }}) right top no-repeat" {%endif%}> 
+                    <h6>{{ block.settings.title }}</h6>
+                    <div class="text-box">{{ block.settings.text }}</div>
+              </div>
+  {% endfor %}
+</div>  
+</div>  
+</div>  
+{% schema %}
+{
+  "name": "Touchland Engredients",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Heading",
+      "default": "6 Essential Engredients"
+    },
+    {
+      "id": "description",
+      "type": "richtext",
+      "label": "Description",
+      "default": "<p>Our high quality aqueous solution is carefully formulated to keep your hands bacteria free while deliciously-scented and moisturized. <a href='#'>Learn more</a></p>"
+    }
+  ],  
+  "blocks": [
+    {
+        "type": "text",
+        "name": "Image Block",
+        "limit": 6,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Image with text"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          }
+        ]
+      }
+  ],
+  "presets": [
+    {
+      "name": "Touchland Engredients",
+      "category": "Touchland"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

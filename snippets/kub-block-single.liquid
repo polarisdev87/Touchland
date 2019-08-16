@@ -1,0 +1,48 @@
+<div class="flex__item flex flex--center-vertical" {{ block.shopify_attributes }}>
+          	{% if block.settings.align-img == 'left' %}
+              <div class="grid__item large--one-half medium-down--one-full pl-0">
+                {% if block.settings.image != blank %}
+                	<img src="{{ block.settings.image | img_url: '800x' }}" alt="{{ block.settings.image.alt }}" class="image-content__image">
+                {% else %}
+                  <div class="image-content__image">
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="grid__item large--one-half medium-down--one-full image-content__text pl-0 text-{{ block.settings.align }}">
+                <h2>{{ block.settings.title }}</h2>
+                <div class="text">{{ block.settings.text }}</div>
+                {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" class="h6">{{ block.settings.cta_label }}</a>{% endif %}
+              </div>
+            {% elsif block.settings.align-img == 'center' %}
+              <div class="grid__item large--one-half medium-down--one-full text-{{ block.settings.align }}">
+                <h2>{{ block.settings.title }}</h2>
+                <div class="text">{{ block.settings.text }}</div>
+                {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" class="h6">{{ block.settings.cta_label }}</a>{% endif %}
+              </div>
+              <div class="desktop-12 tablet-12 mobile-full">
+                {% if block.settings.image != blank %}
+                  <img src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.image.alt }}" class="image-content__image">
+                {% else %}
+                  <div class="image-content__image">
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endif %}
+              </div>
+            {% elsif block.settings.align-img == 'right' %}
+              <div class="grid__item large--one-half medium-down--one-full image-content__text text-{{ block.settings.align }}">
+                <h2>{{ block.settings.title }}</h2>
+                <div class="text">{{ block.settings.text }}</div>
+                {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" class="h6">{{ block.settings.cta_label }}</a>{% endif %}
+              </div>
+              <div class="grid__item large--one-half medium-down--one-full pl-0">
+                {% if block.settings.image != blank %}
+                	<img src="{{ block.settings.image | img_url: '800x' }}" alt="{{ block.settings.image.alt }}" class="image-content__image">
+                {% else %}
+                  <div class="image-content__image">
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div> 

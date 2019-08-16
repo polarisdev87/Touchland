@@ -1,0 +1,127 @@
+<div class="row">
+  {% for block in section.blocks %}  
+            <div class="flex__item flex flex--center-vertical element-{{ forloop.index }}" {{ block.shopify_attributes }}>
+          	{% if block.settings.align-img == 'left' %}
+              <div class="grid__item large--one-half medium-down--one-full pl-0">
+                {% if block.settings.image != blank %}
+                	<img src="{{ block.settings.image | img_url: '800x' }}" alt="{{ block.settings.image.alt }}" class="image-content__image">
+                {% else %}
+                  <div class="image-content__image">
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="grid__item large--one-half medium-down--one-full image-content__text pl-0 text-{{ block.settings.align }}">
+                <h2>{{ block.settings.title }}</h2>
+                <div class="text">{{ block.settings.text }}</div>
+                {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" class="h6">{{ block.settings.cta_label }}</a>{% endif %}
+              </div>
+            {% elsif block.settings.align-img == 'center' %}
+              <div class="grid__item large--one-half medium-down--one-full text-{{ block.settings.align }}">
+                <h2>{{ block.settings.title }}</h2>
+                <div class="text">{{ block.settings.text }}</div>
+                {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" class="h6">{{ block.settings.cta_label }}</a>{% endif %}
+              </div>
+              <div class="desktop-12 tablet-12 mobile-full">
+                {% if block.settings.image != blank %}
+                  <img src="{{ block.settings.image | img_url: '600x' }}" alt="{{ block.settings.image.alt }}" class="image-content__image">
+                {% else %}
+                  <div class="image-content__image">
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endif %}
+              </div>
+            {% elsif block.settings.align-img == 'right' %}
+              <div class="grid__item large--one-half medium-down--one-full image-content__text text-{{ block.settings.align }}">
+                <h2>{{ block.settings.title }}</h2>
+                <div class="text">{{ block.settings.text }}</div>
+                {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" class="h6">{{ block.settings.cta_label }}</a>{% endif %}
+              </div>
+              <div class="grid__item large--one-half medium-down--one-full pl-0">
+                {% if block.settings.image != blank %}
+                	<img src="{{ block.settings.image | img_url: '800x' }}" alt="{{ block.settings.image.alt }}" class="image-content__image">
+                {% else %}
+                  <div class="image-content__image">
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div> 
+  {% endfor %}
+</div>  
+{% schema %}
+{
+  "name": "Touchland Home Ethos",
+  "max_blocks": 2,
+  "blocks": [
+    {
+        "type": "text",
+        "name": "Image Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "radio",
+            "id": "align-img",
+            "label": "Image alignment",
+            "options": [
+              { "value": "left", "label": "Left" },
+              { "value": "right", "label": "Right" }
+            ],
+            "default": "left"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Image with text"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          },
+          {
+            "type": "text",
+            "id": "cta_label",
+            "label": "Link label",
+            "default": "Link label"
+          },
+          {
+            "type": "radio",
+            "id": "align",
+            "label": "Text alignment",
+            "options": [
+              { "value": "left", "label": "Left" },
+              { "value": "center", "label": "Center" },
+              { "value": "right", "label": "Right" }
+            ],
+            "default": "left"
+          }
+        ]
+      }
+  ],
+  "presets": [
+    {
+      "name": "Touchland Home Ethos",
+      "category": "Touchland"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

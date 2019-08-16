@@ -1,0 +1,37 @@
+<div class="section-instagram">
+   <div class="wrapper">
+      <div class="grid-uniform home-instagram">
+         <div class="section-header text-center">
+            <h3> {{ section.settings.title }} </h3>
+         </div>
+      </div>
+   </div>
+   <div class="grid__item one-whole pl-0">
+      <div id="insta-feed"></div>
+   </div>
+</div>
+{% schema %}
+{
+  "name": "Touchland Instagram",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Heading",
+      "default": "Beauty in real life (on instagram)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Touchland Instagram",
+      "category": "Touchland"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

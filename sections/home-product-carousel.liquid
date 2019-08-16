@@ -1,0 +1,41 @@
+<div class="section-carousel">
+<div class="wrapper">
+  <!-- Set up your HTML -->
+<div class="owl-carousel">
+      {% for product in collections['touchland'].products %}
+        {% include 'product-carousel' %}
+      {% endfor %}
+</div>
+</div>  
+</div>  
+{% schema %}
+{
+  "name": "Touchland Carousel",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Heading",
+      "default": "6 Essential Engredients"
+    },
+    {
+      "id": "description",
+      "type": "richtext",
+      "label": "Description",
+      "default": "<p>Our high quality aqueous solution is carefully formulated to keep your hands bacteria free while deliciously-scented and moisturized. <a href='#'>Learn more</a></p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Touchland Carousel",
+      "category": "Touchland"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

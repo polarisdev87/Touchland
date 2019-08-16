@@ -1,0 +1,15 @@
+<div class="grid__item one-quarter px-0 medium-down--one-whole text-center related-cart">
+   <div class="overlay-image">
+      <img src="{{ block.settings.image | img_url: '450x' }}"/>
+      <p class="supports-fontface icon icon-instagram">{{block.settings.social_handle}}<a href="#" class="btn visually-hidden">Click to shop</a></p>
+   </div>
+   {% assign product = all_products[block.settings.product] %}
+   <div class="product-wrapper">
+      <h4 class="title">{{ product.title }}<br><span class="atc-span">{{ product.variants[0].title }}</span></h4>
+      <div class="image-wrapper">
+         <a href="/products/{{product.handle}}"><img src="{{ product.variants[0].image.src  | img_url: '400x180' }}" class="atc-image" /></a>
+      </div>
+      <p>{{ product.variants[0].price | money }}</p>
+      <a href="/cart/add?id={{product.variants[0].id}}&amp;quantity=1" data-variant-id="{{product.variants[0].id}}" class="btn sighted-in-tl-btn">Add to Cart</a>
+   </div>
+</div>

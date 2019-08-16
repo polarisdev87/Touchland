@@ -1,0 +1,53 @@
+<div class="wrapper">
+  <div class="text-center swtl-header">
+    <h2>{{ section.settings.text-box }}</h2>
+  </div>
+</div>
+<div class="section-home-siwt grid mx-0">
+  {% for block in section.blocks %}
+          {% include 'sitl-grid-item' %}
+  {% endfor %}
+</div>  
+{% schema %}
+{
+  "name": "Sighted with Touchland",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "id": "text-box",
+      "type": "text",
+      "label": "Heading",
+      "default": "Sighted with Touchland"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Add New Sighted",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+       		"label": "Image Banner"
+        },
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "text",
+            "id": "social_handle",
+            "label": "Social Profile"
+          }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sighted with Touchland",
+      "category": "Touchland"
+    }
+  ]
+}
+{% endschema %}

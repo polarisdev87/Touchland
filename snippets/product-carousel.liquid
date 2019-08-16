@@ -1,0 +1,26 @@
+<div class="product-block">
+  <div class="product-item-inside product">
+    <a {% if product.images.size > 1 %}class="img-wrap" {% endif %}href="{{ product.url }}">
+    <div class="reveal">
+      {% if product.images.size > 1 %}
+        <img class="img-swap img-product-{{ product.handle }}" alt="{{ product.title }}" src="{{ product | img_url: '420x' | split:'?' | first }}" srcset="{{ product | img_url: '140x' | split:'?' | first }} 140w, {{ product | img_url: '175x' | split:'?' | first }} 175w, {{ product | img_url: '190x' | split:'?' | first }} 190w, {{ product | img_url: '230x' | split:'?' | first }} 230w, {{ product | img_url: '320x' | split:'?' | first }} 320w, {{ product | img_url: '370x' | split:'?' | first }} 370w, {{ product | img_url: '430x' | split:'?' | first }} 430w" sizes="(min-width: 768px) 21.76vw, 46.67vw" />
+      {% endif %}
+      <img class="hidden img-primary img-product-{{ product.handle }}" alt="{{ product.title }}" src="{{ product.images.last | product_img_url: '420x' | split:'?' | first }}" srcset="{{ product.images.last | product_img_url: '140x' | split:'?' | first }} 140w, {{ product.images.last | product_img_url: '175x' | split:'?' | first }} 175w, {{ product.images.last | product_img_url: '190x' | split:'?' | first }} 190w, {{ product.images.last | product_img_url: '230x' | split:'?' | first }} 230w, {{ product.images.last | product_img_url: '320x' | split:'?' | first }} 320w, {{ product.images.last | product_img_url: '370x' | split:'?' | first }} 370w, {{ product.images.last | product_img_url: '430x' | split:'?' | first }} 430w" sizes="(min-width: 768px) 21.76vw, 46.67vw" />
+      </div>
+    </a>
+
+
+    <a class="info-wrap" href="{{ product.url }}">
+      <div class="product-title">{{ product.title }}</div>
+      <div class="price-wrap product-price visually-hidden">
+        {% if product.compare_at_price_max > product.price %}
+          <del>{{ product.compare_at_price | money }}</del>
+          <span class="sale-price">{{ product.price | money }}</span>
+        {% else %}
+          <span class="price amount">{{ product.price | money }}</span>
+        {% endif %}
+      </div>
+    </a>
+    <p class="text-center"><a class="btn" href="{{ product.url }}">Shop now</a></p>
+  </div>
+</div>
